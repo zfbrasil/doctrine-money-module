@@ -12,5 +12,10 @@
     "require": {
         "doctrine/dbal": "2.4.*",
         "mathiasverraes/money": "1.2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "DoctrineMoneyModule\\" : "src/"
+        }
     }
 }
