@@ -1,0 +1,16 @@
+{
+    "name": "zfbrasil/doctrine-money-module",
+    "description": "Provide ZF2 integration between doctrine and mathiasverraes/money",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "fabiocarneiro",
+            "email": "fahecs@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "doctrine/dbal": "2.4.*",
+        "mathiasverraes/money": "1.2.*"
+    }
+}
