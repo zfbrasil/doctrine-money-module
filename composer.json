@@ -10,7 +10,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "doctrine/dbal": "2.4.*",
+        "doctrine/dbal": "2.5.*",
         "mathiasverraes/money": "1.2.*"
     },
     "autoload": {
