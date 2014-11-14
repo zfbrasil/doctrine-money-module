@@ -9,13 +9,42 @@
         }
     ],
     "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/fabiocarneiro/common"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/fabiocarneiro/dbal"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/fabiocarneiro/DoctrineModule"
+        }
+    ],
+    "require-dev": {
+    	"phpunit/phpunit": "4.*",
+        "zendframework/zend-loader": "2.*",
+        "fabpot/php-cs-fixer": "dev-master"
+    },
     "require": {
-        "doctrine/dbal": "2.5.*",
+        "php": ">=5.5",
+        "doctrine/doctrine-module": "dev-update-hydrator-behavior",
+        "zendframework/zend-form": "2.3.*",
+        "zendframework/zend-view": "2.3.*",
+        "zendframework/zend-servicemanager": "2.3.*",
+        "zendframework/zend-i18n": "2.3.*",
         "mathiasverraes/money": "1.2.*"
     },
     "autoload": {
         "psr-4": {
             "DoctrineMoneyModule\\" : "src/"
         }
-    }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DoctrineMoneyModuleTest\\" : "tests/DoctrineMoneyModuleTest/"
+        }
+    } 
 }

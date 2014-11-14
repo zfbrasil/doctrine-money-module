@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<phpunit
+    bootstrap="Bootstrap.php"
+    colors="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    verbose="true"
+    stopOnFailure="false"
+    processIsolation="false"
+    backupGlobals="false"
+    syntaxCheck="true"
+>
+    <testsuites>
+        <testsuite name="DoctrineMoneyModule Test Suite">
+            <directory>./DoctrineMoneyModuleTest</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <blacklist>
+              <directory>./vendor</directory>
+              <file>./Bootstrap.php</file>
+        </blacklist>
+    </filter>
+</phpunit>

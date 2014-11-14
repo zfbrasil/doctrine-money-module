@@ -1,6 +1,14 @@
 <?php
 
 return [
+    'form_elements' => [
+        'aliases' => [
+            'money' => 'DoctrineMoneyModule\Form\Money'
+        ],
+        'invokables' => [
+            'DoctrineMoneyModule\Form\Money' => 'DoctrineMoneyModule\Form\Money'
+        ]
+    ],
     'view_helpers' => [
         'aliases' => [
             'MoneyFormat' => 'DoctrineMoneyModule\View\Helper\MoneyFormat'
