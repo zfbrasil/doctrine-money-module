@@ -14,7 +14,7 @@ return [
             'money_driver' => [
                 'class' => 'Doctrine\ORM\Mapping\Driver\PHPDriver',
                 'paths' => [
-                    __DIR__ . '/../src/Model/Mapping'
+                    __DIR__ . '/../mapping/PHPDriver/mongodb-odm'
                 ]
             ],
             'orm_default' => [
