@@ -10,12 +10,18 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 class CurrencyType extends StringType
 {
     const NAME = 'currency';
-
+    
+    /**
+     * {@inheritDoc}
+     */
     public function getName()
     {
         return self::NAME;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         if ($value === null || $value instanceof Currency) {
