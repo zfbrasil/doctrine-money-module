@@ -1,6 +1,6 @@
 <?php
 
-namespace DoctrineMoneyModuleTest\TestAsset\Model;
+namespace ZFBrasil\DoctrineMoneyModuleTest\TestAsset\Model;
 
 use Money\Money;
 
@@ -17,11 +17,17 @@ class HasMoneyPropertyModel
      */
     protected $price;
 
+    /**
+     * @return Money
+     */
     public function getPrice()
     {
         return $this->price;
     }
 
+    /**
+     * @param Money $price
+     */
     public function setPrice(Money $price)
     {
         $this->price = $price;

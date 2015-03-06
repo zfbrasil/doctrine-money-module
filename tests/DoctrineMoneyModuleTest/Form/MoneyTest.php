@@ -1,11 +1,11 @@
 <?php
 
-namespace DoctrineMoneyModuleTest\Form;
+namespace ZFBrasil\DoctrineMoneyModuleTest\Form;
 
-use Exception;
 use InvalidArgumentException;
 use PHPUnit_Framework_TestCase as TestCase;
-use DoctrineMoneyModule\Form\Money as MoneyFieldset;
+use ZFBrasil\DoctrineMoneyModule\Exception\BadMethodCallException;
+use ZFBrasil\DoctrineMoneyModule\Form\Money as MoneyFieldset;
 use Money\Money;
 use Zend\Form\ElementInterface;
 
@@ -22,10 +22,10 @@ class MoneyTest extends TestCase
         $fieldset = new MoneyFieldset;
         $fieldset->init();
 
-        $fieldset->bindValues(array(
+        $fieldset->bindValues([
             'amount' => 500,
             'currency' => 'BRL'
-        ));
+        ]);
         $this->assertInstanceOf(Money::class, $fieldset->getObject());
     }
 
@@ -34,10 +34,11 @@ class MoneyTest extends TestCase
         $fieldset = new MoneyFieldset;
         $fieldset->init();
 
-        $fieldset->bindValues(array(
+        $fieldset->bindValues([
             'amount' => "500",
             'currency' => 'BRL'
-        ));
+        ]);
+
         $this->assertInstanceOf(Money::class, $fieldset->getObject());
     }
 
@@ -47,18 +48,18 @@ class MoneyTest extends TestCase
         $fieldset->init();
 
         $this->setExpectedException(InvalidArgumentException::class);
-        $fieldset->bindValues(array(
+        $fieldset->bindValues([
             'amount' => "hello world",
             'currency' => 'BRL'
-        ));
+        ]);
     }
 
     public function testAddElementThrowException()
     {
         $element = $this->getMock(ElementInterface::class);
-        
+
         $fieldset = new MoneyFieldset;
-        $this->setExpectedException(Exception::class);
+        $this->setExpectedException(BadMethodCallException::class);
         $fieldset->add($element);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace DoctrineMoneyModuleTest\Form;
+namespace ZFBrasil\DoctrineMoneyModuleTest\Form;
 
 use StdClass;
 use PHPUnit_Framework_TestCase as TestCase;
@@ -8,8 +8,8 @@ use Money\Money;
 use Zend\Form\Form;
 use Zend\Form\Fieldset;
 use Zend\Stdlib\Hydrator\ClassMethods;
-use DoctrineMoneyModule\Form\Money as MoneyElement;
-use DoctrineMoneyModuleTest\TestAsset\Model\HasMoneyPropertyModel;
+use ZFBrasil\DoctrineMoneyModule\Form\Money as MoneyElement;
+use ZFBrasil\DoctrineMoneyModuleTest\TestAsset\Model\HasMoneyPropertyModel;
 use Zend\Stdlib\Hydrator\ObjectProperty;
 
 /**
@@ -20,7 +20,6 @@ use Zend\Stdlib\Hydrator\ObjectProperty;
  */
 class FormIntegrationTest extends TestCase
 {
-
     public function testElementDirectlyInTheForm()
     {
         $element = new MoneyElement('money');
