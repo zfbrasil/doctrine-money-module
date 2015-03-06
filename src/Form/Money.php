@@ -1,17 +1,18 @@
 <?php
 
-namespace DoctrineMoneyModule\Form;
+namespace ZFBrasil\DoctrineMoneyModule\Form;
 
-use InvalidArgumentException;
-use Exception;
+use ZFBrasil\DoctrineMoneyModule\Exception\BadMethodCallException;
+use Zend\Filter\StringToUpper;
 use Zend\Form\Fieldset;
 use Zend\Form\Element\Number;
-use Zend\Form\Element\Text;
 use Money\Money as MoneyValueObject;
 use Money\Currency as CurrencyValueObject;
-use DoctrineMoneyModule\Hydrator\MoneyHydrator;
+use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
+use ZFBrasil\DoctrineMoneyModule\Hydrator\MoneyHydrator;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\I18n\Filter\NumberFormat;
+use Zend\Validator\NotEmpty;
 
 /**
  * Money form element that will make it very easy to work with money and currencies
@@ -21,8 +22,14 @@ use Zend\I18n\Filter\NumberFormat;
  */
 class Money extends Fieldset implements InputFilterProviderInterface
 {
+    /**
+     * @var CurrencyValueObject|null
+     */
     protected $currency;
 
+    /**
+     * {@inheritDoc}
+     */
     public function init()
     {
         $this->setHydrator(new MoneyHydrator());
@@ -40,7 +47,7 @@ class Money extends Fieldset implements InputFilterProviderInterface
         ]);
 
         parent::add([
-            'type' => Text::class,
+            'type' => CurrencySelect::class,
             'name' => 'currency',
             'options' => [
                 'label' => 'Currency'
@@ -48,6 +55,9 @@ class Money extends Fieldset implements InputFilterProviderInterface
         ]);
     }
 
+    /**
+     * @return CurrencyValueObject
+     */
     public function getCurrency()
     {
         if (null === $this->currency) {
@@ -57,34 +67,41 @@ class Money extends Fieldset implements InputFilterProviderInterface
         return $this->currency;
     }
 
+    /**
+     * @param string $currency
+     */
     public function setCurrency($currency)
     {
         $this->currency = new CurrencyValueObject($currency);
     }
 
-    public function add($elementOrFieldset, array $flags = array())
+    /**
+     * {@inheritDoc}
+     *
+     * @throws BadMethodCallException
+     */
+    public function add($elementOrFieldset, array $flags = [])
     {
-        throw new Exception('You can\'t add elements to money fieldset');
+        throw new BadMethodCallException('You can\'t add elements to money fieldset');
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function extract()
     {
         $data = parent::extract();
-        $data['amount'] = money_format("%.2n", $data['amount']/100);
+        $data['amount'] = money_format("%.2n", $data['amount'] / 100);
+
         return $data;
     }
 
-    public function bindValues(array $values = array())
+    /**
+     * {@inheritDoc}
+     */
+    public function bindValues(array $values = [])
     {
-        try {
-            $values['amount'] = MoneyValueObject::stringToUnits($values['amount']);
-        } catch (Exception $e) {
-            throw new InvalidArgumentException(sprintf(
-                '%s expects an parsable string or integer in amount index, "%s" given',
-                __METHOD__,
-                is_object($values['amount']) ? get_class($values['amount']) : gettype($values['amount'])
-            ));
-        }
+        $values['amount'] = MoneyValueObject::stringToUnits($values['amount']);
 
         if (isset($values['currency'])) {
             $this->setCurrency($values['currency']);
@@ -93,15 +110,30 @@ class Money extends Fieldset implements InputFilterProviderInterface
         return parent::bindValues($values);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getInputFilterSpecification()
     {
         return [
             [
                 'name' => 'amount',
+                'required' => true,
                 'filters' => [
-                    [
-                        'name' => NumberFormat::class
-                    ]
+                    ['name' => NumberFormat::class]
+                ],
+                'validators' => [
+                    ['name' => NotEmpty::class]
+                ]
+            ],
+            [
+                'name' => 'currency',
+                'required' => true,
+                'filters' => [
+                    ['name' => StringToUpper::class]
+                ],
+                'validators' => [
+                    ['name' => NotEmpty::class]
                 ]
             ]
         ];
