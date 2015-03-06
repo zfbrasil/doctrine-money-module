@@ -1,6 +1,6 @@
 <?php
 
-namespace DoctrineMoneyModule;
+namespace ZFBrasil\DoctrineMoneyModule;
 
 /**
  * Hydrator for Money object

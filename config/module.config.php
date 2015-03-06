@@ -56,6 +56,6 @@ return [
         ]
     ],
     'ZFBrasil\\DoctrineMoneyModule' => [
-        'currencies' => require __DIR__ . '/../vendor/mathiasverraes/money/lib/Money/currencies.php'
+        'currencies' => require __DIR__ . '/currencies.php'
     ]
 ];
