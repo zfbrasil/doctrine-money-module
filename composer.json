@@ -32,19 +32,24 @@
         "php": ">=5.5",
         "doctrine/doctrine-module": "dev-update-hydrator-behavior",
         "zendframework/zend-form": "2.3.*",
+        "zendframework/zend-filter": "2.3.*",
+        "zendframework/zend-validator": "2.3.*",
         "zendframework/zend-view": "2.3.*",
         "zendframework/zend-servicemanager": "2.3.*",
         "zendframework/zend-i18n": "2.3.*",
         "mathiasverraes/money": "1.2.*"
     },
+    "suggest": {
+      "doctrine/dbal": "If you want to use Currency DBAL type."
+    },
     "autoload": {
         "psr-4": {
-            "DoctrineMoneyModule\\" : "src/"
+            "ZFBrasil\\DoctrineMoneyModule\\" : "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DoctrineMoneyModuleTest\\" : "tests/DoctrineMoneyModuleTest/"
+            "ZFBrasil\\DoctrineMoneyModuleTest\\" : "tests/DoctrineMoneyModuleTest/"
         }
     } 
 }
