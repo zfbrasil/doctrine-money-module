@@ -1,26 +1,35 @@
 <?php
 
+use Doctrine\Common\Persistence\Mapping\Driver\PHPDriver;
+use ZFBrasil\DoctrineMoneyModule\DBAL\Types\CurrencyType;
+use ZFBrasil\DoctrineMoneyModule\Form\Money;
+use ZFBrasil\DoctrineMoneyModule\View\Helper\MoneyFormat;
+use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
+use ZFBrasil\DoctrineMoneyModule\Factory\Form\Element\CurrencySelectFactory;
+
 return [
     'form_elements' => [
         'aliases' => [
-            'money' => 'DoctrineMoneyModule\Form\Money'
+            'money' => Money::class,
+            'currencyselect' => CurrencySelectFactory::class,
+            CurrencySelect::class => CurrencySelectFactory::class
         ],
         'invokables' => [
-            'DoctrineMoneyModule\Form\Money' => 'DoctrineMoneyModule\Form\Money'
+            Money::class => Money::class
         ]
     ],
     'view_helpers' => [
         'aliases' => [
-            'MoneyFormat' => 'DoctrineMoneyModule\View\Helper\MoneyFormat'
+            'MoneyFormat' => MoneyFormat::class
         ],
         'invokables' => [
-            'DoctrineMoneyModule\View\Helper\MoneyFormat' => 'DoctrineMoneyModule\View\Helper\MoneyFormat'
+            MoneyFormat::class => MoneyFormat::class
         ]
     ],
     'doctrine' => [
         'driver' => [
             'money_driver' => [
-                'class' => 'Doctrine\ORM\Mapping\Driver\PHPDriver',
+                'class' => PHPDriver::class,
                 'paths' => [
                     __DIR__ . '/../mapping/PHPDriver/orm'
                 ]
@@ -41,9 +50,12 @@ return [
         'configuration' => [
             'orm_default' => [
                 'types' => [
-                    'currency' => 'DoctrineMoneyModule\DBAL\Types\CurrencyType',
-                ],
-            ],
-        ],
+                    'currency' => CurrencyType::class
+                ]
+            ]
+        ]
     ],
+    'ZFBrasil\\DoctrineMoneyModule' => [
+        'currencies' => require __DIR__ . '/../vendor/mathiasverraes/money/lib/Money/currencies.php'
+    ]
 ];
