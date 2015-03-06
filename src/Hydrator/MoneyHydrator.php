@@ -1,6 +1,6 @@
 <?php
 
-namespace DoctrineMoneyModule\Hydrator;
+namespace ZFBrasil\DoctrineMoneyModule\Hydrator;
 
 use Zend\Stdlib\Hydrator\HydratorInterface;
 use Money\Money;
@@ -14,7 +14,9 @@ use Money\Currency;
  */
 class MoneyHydrator implements HydratorInterface
 {
-
+    /**
+     * {@inheritDoc}
+     */
     public function extract($object)
     {
         return [
@@ -23,6 +25,9 @@ class MoneyHydrator implements HydratorInterface
         ];
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function hydrate(array $data, $object)
     {
         return new Money(
