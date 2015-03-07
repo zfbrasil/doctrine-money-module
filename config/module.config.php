@@ -5,7 +5,7 @@ use ZFBrasil\DoctrineMoneyModule\DBAL\Types\CurrencyType;
 use ZFBrasil\DoctrineMoneyModule\Form\Money;
 use ZFBrasil\DoctrineMoneyModule\View\Helper\MoneyFormat;
 use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
-use ZFBrasil\DoctrineMoneyModule\Factory\Form\Element\CurrencySelectFactory;
+use ZFBrasil\DoctrineMoneyModule\Form\Element\Factory\CurrencySelectFactory;
 
 return [
     'form_elements' => [
@@ -55,7 +55,7 @@ return [
             ]
         ]
     ],
-    'ZFBrasil\\DoctrineMoneyModule' => [
-        'currencies' => require __DIR__ . '/currencies.php'
+    'money' => [
+        'currencies' => require __DIR__ . '/currencies;config.php'
     ]
 ];
