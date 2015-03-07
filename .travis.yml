@@ -9,4 +9,4 @@ install:
     - vendor/bin/phpunit
   
 script:
-    - vendor/bin/php-cs-fixer fix -v --dry-run .
+    - vendor/bin/php-cs-fixer fix -v --dry-run ./test
