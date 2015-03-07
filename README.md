@@ -1,7 +1,7 @@
 DoctrineMoneyModule
 =====================
 
-Provide ZF2 integration between doctrine and mathiasverraes/money
+Provides integration between ZF2, Doctrine and [mathiasverraes/money](https://github.com/mathiasverraes/money)
 
 Installation
 ------------
@@ -9,7 +9,7 @@ Installation
 ```javascript
 {
   "require": {
-    "zfbrasil/doctrine-money-module": "dev-master"
+    "zfbrasil/doctrine-money-module": "0.1"
   }
 }
 ```
