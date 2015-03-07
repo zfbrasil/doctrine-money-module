@@ -1,6 +1,6 @@
 <?php
 
-namespace ZFBrasil\DoctrineMoneyModuleTest\TestAsset\Model;
+namespace ZFBrasil\DoctrineMoneyModule\Test\TestAsset\Model;
 
 use Money\Money;
 

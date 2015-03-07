@@ -1,6 +1,6 @@
 <?php
 
-namespace ZFBrasil\DoctrineMoneyModuleTest\Form;
+namespace ZFBrasil\DoctrineMoneyModule\Test\Form;
 
 use InvalidArgumentException;
 use PHPUnit_Framework_TestCase as TestCase;
