@@ -12,7 +12,7 @@ use Zend\Form\ElementInterface;
 /**
  * Description of MoneyTest
  *
- * @author Fábio Carneiro <fahecs@gmail.com>
+ * @author  Fábio Carneiro <fahecs@gmail.com>
  * @license MIT
  */
 class MoneyTest extends TestCase

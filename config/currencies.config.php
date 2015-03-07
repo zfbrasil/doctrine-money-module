@@ -1,6 +1,6 @@
 <?php
 // From http://openexchangerates.org/currencies.json
-return array(
+return [
 	"AED" => "United Arab Emirates Dirham",
 	"AFN" => "Afghan Afghani",
 	"ALL" => "Albanian Lek",
@@ -9,7 +9,7 @@ return array(
 	"AOA" => "Angolan Kwanza",
 	"ARS" => "Argentine Peso",
 	"AUD" => "Australian Dollar",
-	"AWG" => "Aruban Florin", 
+	"AWG" => "Aruban Florin",
 	"AZN" => "Azerbaijani Manat",
 	"BAM" => "Bosnia-Herzegovina Convertible Mark",
 	"BBD" => "Barbadian Dollar",
@@ -161,4 +161,4 @@ return array(
 	"ZAR" => "South African Rand",
 	"ZMK" => "Zambian Kwacha",
 	"ZWL" => "Zimbabwean Dollar",
-);
+];

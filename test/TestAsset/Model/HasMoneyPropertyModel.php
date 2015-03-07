@@ -7,7 +7,7 @@ use Money\Money;
 /**
  * Model for testing purposes
  *
- * @author Fábio Carneiro <fahecs@gmail.com>
+ * @author  Fábio Carneiro <fahecs@gmail.com>
  * @license MIT
  */
 class HasMoneyPropertyModel

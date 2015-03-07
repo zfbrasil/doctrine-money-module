@@ -15,7 +15,7 @@ use Zend\Stdlib\Hydrator\ObjectProperty;
 /**
  * Test to see if Form returns a valid object on getData
  *
- * @author Fábio Carneiro <fahecs@gmail.com>
+ * @author  Fábio Carneiro <fahecs@gmail.com>
  * @license MIT
  */
 class FormIntegrationTest extends TestCase
@@ -40,7 +40,7 @@ class FormIntegrationTest extends TestCase
         $form->setData($data);
 
         $this->assertTrue($form->isValid());
-        
+
         $amountValue   = $form->get('money')->get('amount')->getValue();
         $currencyValue = $form->get('money')->get('currency')->getValue();
         $object        = $form->getData()->money;
@@ -79,9 +79,9 @@ class FormIntegrationTest extends TestCase
         ];
 
         $form->setData($data);
-        
+
         $this->assertTrue($form->isValid());
-        
+
         $amountValue   = $form->get('hasMoneyElementFieldset')->get('price')->get('amount')->getValue();
         $currencyValue = $form->get('hasMoneyElementFieldset')->get('price')->get('currency')->getValue();
         $object        = $form->getData();
