@@ -1,12 +1,12 @@
 <?php
 
-namespace ZFBrasil\DoctrineMoneyModuleTest\Factory\Form\Element;
+namespace ZFBrasil\DoctrineMoneyModuleTest\Form\Element\Factory;
 
 use PHPUnit_Framework_TestCase as TestCase;
 use Zend\Form\FormElementManager;
 use Zend\ServiceManager\Config;
 use Zend\ServiceManager\ServiceManager;
-use ZFBrasil\DoctrineMoneyModule\Factory\Form\Element\CurrencySelectFactory;
+use ZFBrasil\DoctrineMoneyModule\Form\Element\Factory\CurrencySelectFactory;
 use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
 
 class CurrencySelectFactoryTest extends TestCase
@@ -17,7 +17,7 @@ class CurrencySelectFactoryTest extends TestCase
     private $serviceManager;
 
     private $config = [
-        'ZFBrasil\\DoctrineMoneyModule' => [
+        'money' => [
             'currencies' => [
                 'BRL' => 'Brazilian Real',
                 'SAD' => 'Sad Asteka'
@@ -51,6 +51,6 @@ class CurrencySelectFactoryTest extends TestCase
         /* @var CurrencySelect $currencySelect */
         $currencySelect = $factory($formElementManager);
 
-        $this->assertEquals($this->config['ZFBrasil\\DoctrineMoneyModule']['currencies'], $currencySelect->getValueOptions());
+        $this->assertEquals($this->config['money']['currencies'], $currencySelect->getValueOptions());
     }
 }
