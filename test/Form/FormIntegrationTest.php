@@ -1,6 +1,6 @@
 <?php
 
-namespace ZFBrasil\DoctrineMoneyModule\Test\Form;
+namespace ZFBrasil\Test\DoctrineMoneyModule\Form;
 
 use StdClass;
 use PHPUnit_Framework_TestCase as TestCase;
@@ -9,7 +9,7 @@ use Zend\Form\Form;
 use Zend\Form\Fieldset;
 use Zend\Stdlib\Hydrator\ClassMethods;
 use ZFBrasil\DoctrineMoneyModule\Form\Money as MoneyElement;
-use ZFBrasil\DoctrineMoneyModule\Test\TestAsset\Model\HasMoneyPropertyModel;
+use ZFBrasil\Test\DoctrineMoneyModule\TestAsset\Model\HasMoneyPropertyModel;
 use Zend\Stdlib\Hydrator\ObjectProperty;
 
 /**
