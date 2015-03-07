@@ -54,7 +54,6 @@ class FormIntegrationTest extends TestCase
 
     public function testElementInAFieldsetForSomeModel()
     {
-
         $element = new MoneyElement('price');
         $element->init();
 
