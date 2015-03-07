@@ -1,6 +1,6 @@
 <?php
 
-namespace DoctrineMoneyModule\DBAL\Types;
+namespace ZFBrasil\DoctrineMoneyModule\DBAL\Types;
 
 use Doctrine\DBAL\Types\StringType;
 use Money\Currency;
