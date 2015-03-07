@@ -56,6 +56,6 @@ return [
         ]
     ],
     'money' => [
-        'currencies' => require __DIR__ . '/currencies;config.php'
+        'currencies' => require __DIR__ . '/currencies.config.php'
     ]
 ];
