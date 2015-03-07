@@ -49,7 +49,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ZFBrasil\\DoctrineMoneyModuleTest\\" : "tests/DoctrineMoneyModuleTest/"
+            "ZFBrasil\\DoctrineMoneyModuleTest\\" : "test/"
         }
     } 
 }
