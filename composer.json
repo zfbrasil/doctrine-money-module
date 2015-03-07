@@ -14,7 +14,7 @@
         {
             "name": "Daniel Gimenes",
             "email": "daniel@danielgimenes.com.br"
-        },
+        }
     ],
     "minimum-stability": "dev",
     "require": {
