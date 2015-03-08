@@ -6,6 +6,14 @@
         {
             "name": "fabiocarneiro",
             "email": "fahecs@gmail.com"
+        },
+        {
+            "name": "Gabriel Schmitt",
+            "email": "gabrielsch@outlook.com"
+        },
+        {
+            "name": "Daniel Gimenes",
+            "email": "daniel@danielgimenes.com.br"
         }
     ],
     "minimum-stability": "dev",
