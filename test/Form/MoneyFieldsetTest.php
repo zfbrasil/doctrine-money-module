@@ -4,23 +4,36 @@ namespace ZFBrasil\Test\DoctrineMoneyModule\Form;
 
 use InvalidArgumentException;
 use PHPUnit_Framework_TestCase as TestCase;
+use Zend\Form\FormElementManager;
 use ZFBrasil\DoctrineMoneyModule\Exception\BadMethodCallException;
-use ZFBrasil\DoctrineMoneyModule\Form\Money as MoneyFieldset;
+use ZFBrasil\DoctrineMoneyModule\Form\Factory\MoneyFieldsetFactory;
+use ZFBrasil\DoctrineMoneyModule\Form\MoneyFieldset;
 use Money\Money;
 use Zend\Form\ElementInterface;
+use Zend\Form\Factory;
 
 /**
- * Description of MoneyTest
+ * Description of MoneyFieldsetTest
  *
  * @author  Fábio Carneiro <fahecs@gmail.com>
  * @license MIT
  */
-class MoneyTest extends TestCase
+class MoneyFieldsetTest extends TestCase
 {
+    /**
+     * @return MoneyFieldset
+     */
+    private function getMoneyFieldset()
+    {
+        $factory = new MoneyFieldsetFactory();
+        $formManager = $this->getMock(FormElementManager::class);
+
+        return $factory($formManager);
+    }
+
     public function testCanHydrateMoneyWithInteger()
     {
-        $fieldset = new MoneyFieldset;
-        $fieldset->init();
+        $fieldset = $this->getMoneyFieldset();
 
         $fieldset->bindValues([
             'amount' => 500,
@@ -31,8 +44,7 @@ class MoneyTest extends TestCase
 
     public function testCanHydrateMoneyWithString()
     {
-        $fieldset = new MoneyFieldset;
-        $fieldset->init();
+        $fieldset = $this->getMoneyFieldset();
 
         $fieldset->bindValues([
             'amount' => "500",
@@ -44,8 +56,7 @@ class MoneyTest extends TestCase
 
     public function testThrowExceptionWithInvalidString()
     {
-        $fieldset = new MoneyFieldset;
-        $fieldset->init();
+        $fieldset = $this->getMoneyFieldset();
 
         $this->setExpectedException(InvalidArgumentException::class);
         $fieldset->bindValues([
@@ -58,7 +69,7 @@ class MoneyTest extends TestCase
     {
         $element = $this->getMock(ElementInterface::class);
 
-        $fieldset = new MoneyFieldset;
+        $fieldset = $this->getMoneyFieldset();
         $this->setExpectedException(BadMethodCallException::class);
         $fieldset->add($element);
     }
