@@ -7,8 +7,10 @@ use PHPUnit_Framework_TestCase as TestCase;
 use Money\Money;
 use Zend\Form\Form;
 use Zend\Form\Fieldset;
+use Zend\Form\FormElementManager;
 use Zend\Stdlib\Hydrator\ClassMethods;
-use ZFBrasil\DoctrineMoneyModule\Form\Money as MoneyElement;
+use ZFBrasil\DoctrineMoneyModule\Form\Factory\MoneyFieldsetFactory;
+use ZFBrasil\DoctrineMoneyModule\Form\MoneyFieldset;
 use ZFBrasil\Test\DoctrineMoneyModule\TestAsset\Model\HasMoneyPropertyModel;
 use Zend\Stdlib\Hydrator\ObjectProperty;
 
@@ -20,15 +22,26 @@ use Zend\Stdlib\Hydrator\ObjectProperty;
  */
 class FormIntegrationTest extends TestCase
 {
+    /**
+     * @return MoneyFieldset
+     */
+    private function getMoneyFieldset()
+    {
+        $factory = new MoneyFieldsetFactory();
+        $formManager = $this->getMock(FormElementManager::class);
+
+        return $factory($formManager);
+    }
+
     public function testElementDirectlyInTheForm()
     {
-        $element = new MoneyElement('money');
+        $element = $this->getMoneyFieldset();
         $element->init();
 
         $form = new Form();
         $form->setHydrator(new ObjectProperty());
         $form->setObject(new StdClass);
-        $form->add($element);
+        $form->add($element, ['name' => 'money']);
 
         $data = [
             'money' => [
@@ -54,18 +67,18 @@ class FormIntegrationTest extends TestCase
 
     public function testElementInAFieldsetForSomeModel()
     {
-        $element = new MoneyElement('price');
+        $element = $this->getMoneyFieldset();
         $element->init();
 
         $fieldset = new Fieldset('hasMoneyElementFieldset');
-        $fieldset->add($element);
+        $fieldset->add($element, ['name' => 'money']);
         $fieldset->setHydrator(new ClassMethods());
-        $fieldset->setObject(new HasMoneyPropertyModel);
         $fieldset->setUseAsBaseFieldset(true);
 
         $form = new Form();
         $form->add($fieldset);
 
+        // todo: can't load this
         $form->bind(new HasMoneyPropertyModel);
 
         $data = [

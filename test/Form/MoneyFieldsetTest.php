@@ -5,12 +5,10 @@ namespace ZFBrasil\Test\DoctrineMoneyModule\Form;
 use InvalidArgumentException;
 use PHPUnit_Framework_TestCase as TestCase;
 use Zend\Form\FormElementManager;
-use ZFBrasil\DoctrineMoneyModule\Exception\BadMethodCallException;
 use ZFBrasil\DoctrineMoneyModule\Form\Factory\MoneyFieldsetFactory;
 use ZFBrasil\DoctrineMoneyModule\Form\MoneyFieldset;
 use Money\Money;
 use Zend\Form\ElementInterface;
-use Zend\Form\Factory;
 
 /**
  * Description of MoneyFieldsetTest
