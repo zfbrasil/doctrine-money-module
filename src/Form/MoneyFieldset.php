@@ -8,11 +8,13 @@ use Zend\Form\Fieldset;
 use Zend\Form\Element\Number;
 use Money\Money as MoneyValueObject;
 use Money\Currency as CurrencyValueObject;
+use ZFBrasil\DoctrineMoneyModule\Filter\AmountFilter;
 use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
 use ZFBrasil\DoctrineMoneyModule\Hydrator\MoneyHydrator;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\I18n\Filter\NumberFormat;
 use Zend\Validator\NotEmpty;
+use ZFBrasil\DoctrineMoneyModule\InputFilter\MoneyInputFilter;
 
 /**
  * Money form element that will make it very easy to work with money and currencies
@@ -20,7 +22,7 @@ use Zend\Validator\NotEmpty;
  * @author Fábio Carneiro <fahecs@gmail.com>
  * @license MIT
  */
-class Money extends Fieldset implements InputFilterProviderInterface
+class MoneyFieldset extends Fieldset implements InputFilterProviderInterface
 {
     /**
      * @var CurrencyValueObject|null
@@ -32,10 +34,7 @@ class Money extends Fieldset implements InputFilterProviderInterface
      */
     public function init()
     {
-        $this->setHydrator(new MoneyHydrator());
-        $this->setObject(MoneyValueObject::BRL(0));
-
-        parent::add([
+        $this->add([
             'type' => Number::class,
             'name' => 'amount',
             'options' => [
@@ -46,7 +45,7 @@ class Money extends Fieldset implements InputFilterProviderInterface
             ]
         ]);
 
-        parent::add([
+        $this->add([
             'type' => CurrencySelect::class,
             'name' => 'currency',
             'options' => [
@@ -77,32 +76,9 @@ class Money extends Fieldset implements InputFilterProviderInterface
 
     /**
      * {@inheritDoc}
-     *
-     * @throws BadMethodCallException
-     */
-    public function add($elementOrFieldset, array $flags = [])
-    {
-        throw new BadMethodCallException('You can\'t add elements to money fieldset');
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function extract()
-    {
-        $data = parent::extract();
-        $data['amount'] = money_format("%.2n", $data['amount'] / 100);
-
-        return $data;
-    }
-
-    /**
-     * {@inheritDoc}
      */
     public function bindValues(array $values = [])
     {
-        $values['amount'] = MoneyValueObject::stringToUnits($values['amount']);
-
         if (isset($values['currency'])) {
             $this->setCurrency($values['currency']);
         }
@@ -115,27 +91,6 @@ class Money extends Fieldset implements InputFilterProviderInterface
      */
     public function getInputFilterSpecification()
     {
-        return [
-            [
-                'name' => 'amount',
-                'required' => true,
-                'filters' => [
-                    ['name' => NumberFormat::class]
-                ],
-                'validators' => [
-                    ['name' => NotEmpty::class]
-                ]
-            ],
-            [
-                'name' => 'currency',
-                'required' => true,
-                'filters' => [
-                    ['name' => StringToUpper::class]
-                ],
-                'validators' => [
-                    ['name' => NotEmpty::class]
-                ]
-            ]
-        ];
+        return ['type' => MoneyInputFilter::class];
     }
 }

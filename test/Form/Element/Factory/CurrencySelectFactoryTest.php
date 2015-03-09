@@ -1,6 +1,6 @@
 <?php
 
-namespace ZFBrasil\Test\DoctrineMoneyModuleForm\Element\Factory;
+namespace ZFBrasil\Test\DoctrineMoneyModule\Form\Element\Factory;
 
 use PHPUnit_Framework_TestCase as TestCase;
 use Zend\Form\FormElementManager;
