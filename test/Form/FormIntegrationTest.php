@@ -71,7 +71,7 @@ class FormIntegrationTest extends TestCase
         $element->init();
 
         $fieldset = new Fieldset('hasMoneyElementFieldset');
-        $fieldset->add($element, ['name' => 'money']);
+        $fieldset->add($element, ['name' => 'price']);
         $fieldset->setHydrator(new ClassMethods());
         $fieldset->setUseAsBaseFieldset(true);
 
@@ -91,7 +91,6 @@ class FormIntegrationTest extends TestCase
         ];
 
         $form->setData($data);
-
         $this->assertTrue($form->isValid());
 
         $amountValue   = $form->get('hasMoneyElementFieldset')->get('price')->get('amount')->getValue();
