@@ -3,8 +3,6 @@
 namespace ZFBrasil\DoctrineMoneyModule;
 
 /**
- * Hydrator for Money object
- *
  * @author Fábio Carneiro <fahecs@gmail.com>
  * @license MIT
  */

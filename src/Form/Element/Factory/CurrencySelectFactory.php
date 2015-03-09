@@ -7,8 +7,6 @@ use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
 use InvalidArgumentException;
 
 /**
- * Money form element that will make it very easy to work with money and currencies
- *
  * @author Gabriel Schmitt <gabrielsch@outlook.com>
  * @license MIT
  */
