@@ -2,7 +2,8 @@
 
 use Doctrine\Common\Persistence\Mapping\Driver\PHPDriver;
 use ZFBrasil\DoctrineMoneyModule\DBAL\Types\CurrencyType;
-use ZFBrasil\DoctrineMoneyModule\Form\Money;
+use ZFBrasil\DoctrineMoneyModule\Form\Factory\MoneyFieldsetFactory;
+use ZFBrasil\DoctrineMoneyModule\Form\MoneyFieldset;
 use ZFBrasil\DoctrineMoneyModule\View\Helper\MoneyFormat;
 use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
 use ZFBrasil\DoctrineMoneyModule\Form\Element\Factory\CurrencySelectFactory;
@@ -10,17 +11,17 @@ use ZFBrasil\DoctrineMoneyModule\Form\Element\Factory\CurrencySelectFactory;
 return [
     'form_elements' => [
         'aliases' => [
-            'money' => Money::class,
-            'currencyselect' => CurrencySelectFactory::class,
-            CurrencySelect::class => CurrencySelectFactory::class
+            'money' => MoneyFieldset::class,
+            'currencyselect' => CurrencySelect::class,
         ],
-        'invokables' => [
-            Money::class => Money::class
+        'factories' => [
+            CurrencySelect::class => CurrencySelectFactory::class,
+            MoneyFieldset::class => MoneyFieldsetFactory::class
         ]
     ],
     'view_helpers' => [
         'aliases' => [
-            'MoneyFormat' => MoneyFormat::class
+            'moneyFormat' => MoneyFormat::class
         ],
         'invokables' => [
             MoneyFormat::class => MoneyFormat::class
