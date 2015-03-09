@@ -2,6 +2,7 @@
 
 namespace ZFBrasil\DoctrineMoneyModule\Filter;
 
+use Money\InvalidArgumentException;
 use Money\Money;
 use Zend\Filter\AbstractFilter;
 use Zend\Filter\Exception;
@@ -15,6 +16,7 @@ class AmountFilter extends AbstractFilter
     /**
      * {@inheritDoc}
      *
+     * @throws InvalidArgumentException
      * @return int
      */
     public function filter($value)
