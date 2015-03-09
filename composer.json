@@ -16,12 +16,13 @@
     },
     "require": {
         "php": ">=5.5",
-        "doctrine/doctrine-module": "dev-update-hydrator-behavior",
+        "doctrine/doctrine-module": "~0.9",
         "zendframework/zend-form": "~2.3",
         "zendframework/zend-filter": "~2.3",
         "zendframework/zend-validator": "~2.3",
         "zendframework/zend-view": "~2.3",
         "zendframework/zend-servicemanager": "~2.3",
+        "zendframework/zend-modulemanager": "~2.3",
         "zendframework/zend-i18n": "~2.3",
         "mathiasverraes/money": "1.2.*"
     },
