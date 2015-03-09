@@ -51,24 +51,4 @@ class MoneyFieldsetTest extends TestCase
 
         $this->assertInstanceOf(Money::class, $fieldset->getObject());
     }
-
-    public function testThrowExceptionWithInvalidString()
-    {
-        $fieldset = $this->getMoneyFieldset();
-
-        $this->setExpectedException(InvalidArgumentException::class);
-        $fieldset->bindValues([
-            'amount' => "hello world",
-            'currency' => 'BRL'
-        ]);
-    }
-
-    public function testAddElementThrowException()
-    {
-        $element = $this->getMock(ElementInterface::class);
-
-        $fieldset = $this->getMoneyFieldset();
-        $this->setExpectedException(BadMethodCallException::class);
-        $fieldset->add($element);
-    }
 }
