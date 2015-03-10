@@ -2,6 +2,8 @@
 
 namespace ZFBrasil\DoctrineMoneyModule;
 
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
+
 /**
  * @author Fábio Carneiro <fahecs@gmail.com>
  * @license MIT
