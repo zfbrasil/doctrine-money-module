@@ -53,19 +53,4 @@ class MoneyFieldsetTest extends TestCase
 
         $this->assertInstanceOf(Money::class, $fieldset->getObject());
     }
-
-    public function testFieldsetCanGetAndSetCurrency()
-    {
-        $fieldset = $this->getMoneyFieldset();
-        $fieldset->setCurrency('BRL');
-
-        $this->assertInstanceOf(Currency::class, $fieldset->getCurrency());
-    }
-
-    public function testFieldsetReturnsDefaultCurrencyIfNull()
-    {
-        $fieldset = $this->getMoneyFieldset();
-
-        $this->assertInstanceOf(Currency::class, $fieldset->getCurrency());
-    }
 }

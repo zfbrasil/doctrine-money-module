@@ -55,15 +55,13 @@ class MoneyFieldset extends Fieldset implements InputFilterProviderInterface
     }
 
     /**
-     * @return CurrencyValueObject
+     * {@inheritDoc}
      */
-    public function getCurrency()
+    public function setOptions($options)
     {
-        if (null === $this->currency) {
-            $this->currency = new CurrencyValueObject("USD");
+        if (isset($options['currency'])) {
+            $this->setCurrency($options['currency']);
         }
-
-        return $this->currency;
     }
 
     /**
@@ -71,19 +69,7 @@ class MoneyFieldset extends Fieldset implements InputFilterProviderInterface
      */
     public function setCurrency($currency)
     {
-        $this->currency = new CurrencyValueObject($currency);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function bindValues(array $values = [])
-    {
-        if (isset($values['currency'])) {
-            $this->setCurrency($values['currency']);
-        }
-
-        return parent::bindValues($values);
+        $this->currency = (string) $currency;
     }
 
     /**
