@@ -3,7 +3,6 @@
 namespace ZFBrasil\DoctrineMoneyModule\InputFilter;
 
 use Zend\Filter\StringToUpper;
-use Zend\I18n\Filter\NumberFormat;
 use Zend\InputFilter\InputFilter;
 use Zend\Validator\NotEmpty;
 use ZFBrasil\DoctrineMoneyModule\Filter\AmountFilter;

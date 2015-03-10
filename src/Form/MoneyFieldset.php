@@ -2,18 +2,10 @@
 
 namespace ZFBrasil\DoctrineMoneyModule\Form;
 
-use ZFBrasil\DoctrineMoneyModule\Exception\BadMethodCallException;
-use Zend\Filter\StringToUpper;
-use Zend\Form\Fieldset;
 use Zend\Form\Element\Number;
-use Money\Money as MoneyValueObject;
-use Money\Currency as CurrencyValueObject;
-use ZFBrasil\DoctrineMoneyModule\Filter\AmountFilter;
-use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
-use ZFBrasil\DoctrineMoneyModule\Hydrator\MoneyHydrator;
+use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use Zend\I18n\Filter\NumberFormat;
-use Zend\Validator\NotEmpty;
+use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
 use ZFBrasil\DoctrineMoneyModule\InputFilter\MoneyInputFilter;
 
 /**
@@ -24,11 +16,6 @@ use ZFBrasil\DoctrineMoneyModule\InputFilter\MoneyInputFilter;
  */
 class MoneyFieldset extends Fieldset implements InputFilterProviderInterface
 {
-    /**
-     * @var CurrencyValueObject|null
-     */
-    protected $currency;
-
     /**
      * {@inheritDoc}
      */
@@ -52,38 +39,6 @@ class MoneyFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => 'Currency'
             ]
         ]);
-    }
-
-    /**
-     * @return CurrencyValueObject
-     */
-    public function getCurrency()
-    {
-        if (null === $this->currency) {
-            $this->currency = new CurrencyValueObject("USD");
-        }
-
-        return $this->currency;
-    }
-
-    /**
-     * @param string $currency
-     */
-    public function setCurrency($currency)
-    {
-        $this->currency = new CurrencyValueObject($currency);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function bindValues(array $values = [])
-    {
-        if (isset($values['currency'])) {
-            $this->setCurrency($values['currency']);
-        }
-
-        return parent::bindValues($values);
     }
 
     /**
