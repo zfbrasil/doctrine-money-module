@@ -2,18 +2,10 @@
 
 namespace ZFBrasil\DoctrineMoneyModule\Form;
 
-use ZFBrasil\DoctrineMoneyModule\Exception\BadMethodCallException;
-use Zend\Filter\StringToUpper;
 use Zend\Form\Fieldset;
 use Zend\Form\Element\Number;
-use Money\Money as MoneyValueObject;
-use Money\Currency as CurrencyValueObject;
-use ZFBrasil\DoctrineMoneyModule\Filter\AmountFilter;
 use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
-use ZFBrasil\DoctrineMoneyModule\Hydrator\MoneyHydrator;
 use Zend\InputFilter\InputFilterProviderInterface;
-use Zend\I18n\Filter\NumberFormat;
-use Zend\Validator\NotEmpty;
 use ZFBrasil\DoctrineMoneyModule\InputFilter\MoneyInputFilter;
 
 /**
@@ -25,7 +17,7 @@ use ZFBrasil\DoctrineMoneyModule\InputFilter\MoneyInputFilter;
 class MoneyFieldset extends Fieldset implements InputFilterProviderInterface
 {
     /**
-     * @var CurrencyValueObject|null
+     * @var string
      */
     protected $currency;
 
