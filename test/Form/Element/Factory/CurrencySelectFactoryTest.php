@@ -62,11 +62,12 @@ class CurrencySelectFactoryTest extends TestCase
     public function testFactoryCreateElementsWithNoCurrenciesShouldTrownAnException()
     {
         $factory = new CurrencySelectFactory();
+        $this->serviceManager->setService('Config', []);
 
         $formElementManager = $this->getMock(FormElementManager::class);
         $formElementManager->expects($this->once())->method('getServiceLocator')->willReturn($this->serviceManager);
 
-        $this->setExpectedException('\InvalidArgumentException');
+        $this->setExpectedException('InvalidArgumentException');
 
         /* @var CurrencySelect $currencySelect */
         $factory($formElementManager);
