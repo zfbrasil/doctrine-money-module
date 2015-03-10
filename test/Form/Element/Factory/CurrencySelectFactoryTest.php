@@ -9,6 +9,10 @@ use Zend\ServiceManager\ServiceManager;
 use ZFBrasil\DoctrineMoneyModule\Form\Element\Factory\CurrencySelectFactory;
 use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
 
+/**
+ * @author  Gabriel Schmitt <gabrielsch@outlook.com>
+ * @license MIT
+ */
 class CurrencySelectFactoryTest extends TestCase
 {
     /**
@@ -28,12 +32,12 @@ class CurrencySelectFactoryTest extends TestCase
     public function setUp()
     {
         $this->serviceManager = new ServiceManager(new Config($this->config));
-        $this->serviceManager->setService('Config', $this->config);
     }
 
     public function testFactoryCanCreateElement()
     {
         $factory = new CurrencySelectFactory();
+        $this->serviceManager->setService('Config', $this->config);
 
         $formElementManager = $this->getMock(FormElementManager::class);
         $formElementManager->expects($this->once())->method('getServiceLocator')->willReturn($this->serviceManager);
@@ -44,6 +48,7 @@ class CurrencySelectFactoryTest extends TestCase
     public function testFactoryCreateElementWithExpectedCurrencies()
     {
         $factory = new CurrencySelectFactory();
+        $this->serviceManager->setService('Config', $this->config);
 
         $formElementManager = $this->getMock(FormElementManager::class);
         $formElementManager->expects($this->once())->method('getServiceLocator')->willReturn($this->serviceManager);
@@ -52,5 +57,19 @@ class CurrencySelectFactoryTest extends TestCase
         $currencySelect = $factory($formElementManager);
 
         $this->assertEquals($this->config['money']['currencies'], $currencySelect->getValueOptions());
+    }
+
+    public function testFactoryCreateElementsWithNoCurrenciesShouldTrownAnException()
+    {
+        $factory = new CurrencySelectFactory();
+        $this->serviceManager->setService('Config', []);
+
+        $formElementManager = $this->getMock(FormElementManager::class);
+        $formElementManager->expects($this->once())->method('getServiceLocator')->willReturn($this->serviceManager);
+
+        $this->setExpectedException('InvalidArgumentException');
+
+        /* @var CurrencySelect $currencySelect */
+        $factory($formElementManager);
     }
 }
