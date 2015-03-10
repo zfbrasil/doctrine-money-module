@@ -27,6 +27,8 @@ class MoneyHydrator implements HydratorInterface
 
     /**
      * {@inheritDoc}
+     *
+     * @return Money
      */
     public function hydrate(array $data, $object)
     {
