@@ -2,10 +2,10 @@
 
 namespace ZFBrasil\DoctrineMoneyModule\Form;
 
-use Zend\Form\Fieldset;
 use Zend\Form\Element\Number;
-use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
+use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
+use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
 use ZFBrasil\DoctrineMoneyModule\InputFilter\MoneyInputFilter;
 
 /**
@@ -16,11 +16,6 @@ use ZFBrasil\DoctrineMoneyModule\InputFilter\MoneyInputFilter;
  */
 class MoneyFieldset extends Fieldset implements InputFilterProviderInterface
 {
-    /**
-     * @var string
-     */
-    protected $currency;
-
     /**
      * {@inheritDoc}
      */
@@ -44,24 +39,6 @@ class MoneyFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => 'Currency'
             ]
         ]);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setOptions($options)
-    {
-        if (isset($options['currency'])) {
-            $this->setCurrency($options['currency']);
-        }
-    }
-
-    /**
-     * @param string $currency
-     */
-    public function setCurrency($currency)
-    {
-        $this->currency = (string) $currency;
     }
 
     /**
