@@ -3,8 +3,6 @@
 namespace ZFBrasil\DoctrineMoneyModule\Form\Factory;
 
 use Money\Money;
-use Zend\Form\FormElementManager;
-use Zend\ServiceManager\MutableCreationOptionsInterface;
 use ZFBrasil\DoctrineMoneyModule\Form\MoneyFieldset;
 use ZFBrasil\DoctrineMoneyModule\Hydrator\MoneyHydrator;
 
