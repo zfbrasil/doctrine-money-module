@@ -51,4 +51,5 @@ class MoneyFieldsetTest extends TestCase
 
         $this->assertInstanceOf(Money::class, $fieldset->getObject());
     }
+
 }
