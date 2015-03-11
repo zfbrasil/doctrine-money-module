@@ -9,10 +9,10 @@ Provides integration between ZF2, Doctrine and [mathiasverraes/money](https://gi
 Installation
 ------------
 
-```javascript
-{
-  "require": {
-    "zfbrasil/doctrine-money-module": "0.1"
-  }
-}
+To install DoctrineMoneyModule, use [Composer]((http://getcomposer.org/)):
+
+```sh
+$ php composer.phar require zfbrasil/doctrine-money-module:0.*
 ```
+
+Enable the module by adding `ZFBrasil\DoctrineMoneyModule` key to your `application.config.php` file.
