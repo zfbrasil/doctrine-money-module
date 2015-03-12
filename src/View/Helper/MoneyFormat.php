@@ -17,7 +17,7 @@ class MoneyFormat extends AbstractHelper
      */
     public function __invoke(Money $money)
     {
-        $currencyFormat = $this->getView()->getPlugin('currencyFormat');
+        $currencyFormat = $this->getView()->plugin('currencyFormat');
         
         return $currencyFormat($money->getAmount() / 100, $money->getCurrency());
     }
