@@ -17,9 +17,8 @@
         </testsuite>
     </testsuites>
     <filter>
-        <blacklist>
-              <directory>./vendor</directory>
-              <file>./bootstrap.php</file>
-        </blacklist>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+        </whitelist>
     </filter>
 </phpunit>
