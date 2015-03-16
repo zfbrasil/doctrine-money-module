@@ -16,15 +16,14 @@
             "email": "daniel@danielgimenes.com.br"
         }
     ],
-    "minimum-stability": "dev",
     "require-dev": {
-    	"phpunit/phpunit": "4.*",
-        "fabpot/php-cs-fixer": "dev-master",
+    	"phpunit/phpunit": "~4.4",
+        "fabpot/php-cs-fixer": "~1.5",
         "doctrine/dbal": "~2.5"
     },
     "require": {
         "php": ">=5.5",
-        "doctrine/doctrine-module": "~0.9",
+        "doctrine/doctrine-module": "~0.8",
         "zendframework/zend-form": "~2.3",
         "zendframework/zend-filter": "~2.3",
         "zendframework/zend-validator": "~2.3",
