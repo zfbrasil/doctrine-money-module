@@ -28,8 +28,8 @@ class AmountFilterTest extends TestCase
     {
         $filter = new AmountFilter();
 
-        $this->assertSame(null, $filter->filter(''));
+        $this->assertNull($filter->filter(''));
 
-        $this->assertSame(null, $filter->filter(null));
+        $this->assertNull($filter->filter(null));
     }
 }
