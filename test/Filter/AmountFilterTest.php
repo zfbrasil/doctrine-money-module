@@ -15,6 +15,21 @@ class AmountFilterTest extends TestCase
     {
         $filter = new AmountFilter();
 
-        $this->assertEquals(20000, $filter->filter(200));
+        $this->assertSame(20000, $filter->filter(200));
+
+        $this->assertSame(20000, $filter->filter('200'));
+
+        $this->assertSame(0, $filter->filter(0));
+
+        $this->assertSame(0, $filter->filter('0'));
+    }
+
+    public function testShouldNotFilterEmpty()
+    {
+        $filter = new AmountFilter();
+
+        $this->assertNull($filter->filter(''));
+
+        $this->assertNull($filter->filter(null));
     }
 }

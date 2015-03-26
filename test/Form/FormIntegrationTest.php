@@ -5,6 +5,7 @@ namespace ZFBrasil\Test\DoctrineMoneyModule\Form;
 use StdClass;
 use PHPUnit_Framework_TestCase as TestCase;
 use Money\Money;
+use Money\InvalidArgumentException;
 use Zend\Form\Form;
 use Zend\Form\Fieldset;
 use Zend\Form\FormElementManager;
@@ -42,6 +43,10 @@ class FormIntegrationTest extends TestCase
         $form->setHydrator(new ObjectProperty());
         $form->setObject(new StdClass);
         $form->add($element, ['name' => 'money']);
+
+        $this->assertFalse($form->setData([])->isValid());
+        $this->assertFalse($form->setData(['money' => ['amount' => '123', 'currency' => '']])->isValid());
+        $this->assertFalse($form->setData(['money' => ['amount' => '', 'currency' => 'BRL']])->isValid());
 
         $data = [
             'money' => [
@@ -102,5 +107,20 @@ class FormIntegrationTest extends TestCase
         $this->assertInstanceOf(Money::class, $object->getPrice());
         $this->assertSame(50025, $object->getPrice()->getAmount());
         $this->assertSame("BRL", $object->getPrice()->getCurrency()->getName());
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage The value could not be parsed as money
+     */
+    public function testValueCouldNotBeParsedAsMoney()
+    {
+        $element = $this->getMoneyFieldset();
+        $element->init();
+
+        $form = new Form();
+        $form->add($element, ['name' => 'money']);
+
+        $this->assertFalse($form->setData(['money' => ['amount' => 'bad', 'currency' => 'BRL']])->isValid());
     }
 }
