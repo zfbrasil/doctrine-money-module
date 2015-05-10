@@ -1,7 +1,8 @@
 <?php
 
+namespace ZFBrasil\DoctrineMoneyModule;
+
 use Doctrine\Common\Persistence\Mapping\Driver\PHPDriver;
-use ZFBrasil\DoctrineMoneyModule\DBAL\Types\CurrencyType;
 use ZFBrasil\DoctrineMoneyModule\Form\Factory\MoneyFieldsetFactory;
 use ZFBrasil\DoctrineMoneyModule\Form\MoneyFieldset;
 use ZFBrasil\DoctrineMoneyModule\View\Helper\MoneyFormat;
@@ -29,32 +30,19 @@ return [
     ],
     'doctrine' => [
         'driver' => [
-            'money_driver' => [
+            'money_driver_orm' => [
                 'class' => PHPDriver::class,
                 'paths' => [
                     __DIR__ . '/../mapping/PHPDriver/orm'
                 ]
             ],
-            'orm_default' => [
-                'drivers' => [
-                    'Money\Money' => 'money_driver'
-                ],
-            ],
-        ],
-        'connection' => [
-            'orm_default' => [
-                'doctrine_type_mappings' => [
-                    'currency' => 'currency',
-                ],
-            ],
-        ],
-        'configuration' => [
-            'orm_default' => [
-                'types' => [
-                    'currency' => CurrencyType::class
+            'money_driver_odm_mongodb' => [
+                'class' => PHPDriver::class,
+                'paths' => [
+                    __DIR__ . '/../mapping/PHPDriver/odm-mongodb'
                 ]
-            ]
-        ]
+            ],
+        ],
     ],
     'money' => [
         'currencies' => require __DIR__ . '/currencies.config.php'
