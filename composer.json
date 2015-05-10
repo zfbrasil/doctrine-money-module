@@ -20,7 +20,7 @@
     	"phpunit/phpunit": "~4.4",
         "fabpot/php-cs-fixer": "dev-master",
         "doctrine/dbal": "~2.5",
-        "doctrine/mongodb-odm": "~1.0"
+        "doctrine/mongodb-odm": "1.0.*@dev"
     },
     "require": {
         "php": ">=5.5",
@@ -36,7 +36,7 @@
     },
     "suggest": {
         "doctrine/dbal": "2.5.*",
-        "doctrine/mongodb-odm": "~1.0"
+        "doctrine/mongodb-odm": "1.0.*@dev"
     },
     "autoload": {
         "psr-4": {
