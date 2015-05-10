@@ -12,6 +12,9 @@ script:
     - vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml
     - vendor/bin/php-cs-fixer fix -v --dry-run ./test
 
+before_script:
+  - echo "extension = mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover ./build/logs/clover.xml
