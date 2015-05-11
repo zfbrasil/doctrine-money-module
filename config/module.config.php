@@ -1,7 +1,5 @@
 <?php
 
-namespace ZFBrasil\DoctrineMoneyModule;
-
 use Doctrine\Common\Persistence\Mapping\Driver\PHPDriver;
 use ZFBrasil\DoctrineMoneyModule\Form\Factory\MoneyFieldsetFactory;
 use ZFBrasil\DoctrineMoneyModule\Form\MoneyFieldset;
@@ -56,12 +54,12 @@ return [
         'configuration' => [
             'odm_default' => [
                 'types' => [
-                    'currency' => ODM\MongoDB\Types\CurrencyType::class
+                    'currency' => \ZFBrasil\DoctrineMoneyModule\ODM\MongoDB\Types\CurrencyType::class
                 ]
             ],
             'orm_default' => [
                 'types' => [
-                    'currency' => DBAL\Types\CurrencyType::class
+                    'currency' => \ZFBrasil\DoctrineMoneyModule\DBAL\Types\CurrencyType::class
                 ]
             ],
         ],

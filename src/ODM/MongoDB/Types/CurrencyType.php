@@ -20,12 +20,6 @@ class CurrencyType extends StringType
             return $value;
         }
 
-        $val = new Currency($value);
-
-        if (!$val) {
-            throw new \Exception('Invalid value for type conversion to Money\Money');
-        }
-
-        return $val;
+        return new Currency($value);
     }
 }
