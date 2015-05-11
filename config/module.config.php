@@ -42,6 +42,35 @@ return [
                     __DIR__ . '/../mapping/PHPDriver/odm-mongodb'
                 ]
             ],
+            'odm_default' => [
+                'drivers' => [
+                    'Money\Money' => 'money_driver_odm_mongodb'
+                ],
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    'Money\Money' => 'money_driver_orm'
+                ],
+            ]
+        ],
+        'configuration' => [
+            'odm_default' => [
+                'types' => [
+                    'currency' => ODM\MongoDB\Types\CurrencyType::class
+                ]
+            ],
+            'orm_default' => [
+                'types' => [
+                    'currency' => DBAL\Types\CurrencyType::class
+                ]
+            ],
+        ],
+        'connection' => [
+            'orm_default' => [
+                'doctrine_type_mappings' => [
+                    'currency' => 'currency',
+                ],
+            ],
         ],
     ],
     'money' => [
