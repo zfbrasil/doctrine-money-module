@@ -2,10 +2,10 @@
 
 namespace ZFBrasil\DoctrineMoneyModule\ODM\MongoDB\Types;
 
-use Doctrine\ODM\MongoDB\Types\StringType;
+use Doctrine\ODM\MongoDB\Types\Type;
 use Money\Currency;
 
-class CurrencyType extends StringType
+class CurrencyType extends Type
 {
     const NAME = 'currency';
 
@@ -21,5 +21,21 @@ class CurrencyType extends StringType
         }
 
         return new Currency($value);
+    }
+
+    public function closureToMongo()
+    {
+        return '
+            if ($value) {
+                $return = $value->getName();
+            } else {
+                $return null;
+            }
+           ';
+    }
+
+    public function closureToPHP()
+    {
+        return '$return = new \Money\Currency($value);';
     }
 }
