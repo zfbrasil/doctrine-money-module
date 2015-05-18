@@ -20,7 +20,7 @@ class MoneyHydrator implements HydratorInterface
     public function extract($object)
     {
         return [
-            'amount' => $object->getAmount(),
+            'amount' => $object->getAmount() / 100,
             'currency' => $object->getCurrency()->getName()
         ];
     }
