@@ -1,7 +1,6 @@
 <?php
 
 use Doctrine\Common\Persistence\Mapping\Driver\PHPDriver;
-use ZFBrasil\DoctrineMoneyModule\DBAL\Types\CurrencyType;
 use ZFBrasil\DoctrineMoneyModule\Form\Factory\MoneyFieldsetFactory;
 use ZFBrasil\DoctrineMoneyModule\Form\MoneyFieldset;
 use ZFBrasil\DoctrineMoneyModule\View\Helper\MoneyFormat;
@@ -29,16 +28,39 @@ return [
     ],
     'doctrine' => [
         'driver' => [
-            'money_driver' => [
+            'money_driver_orm' => [
                 'class' => PHPDriver::class,
                 'paths' => [
                     __DIR__ . '/../mapping/PHPDriver/orm'
                 ]
             ],
+            'money_driver_odm_mongodb' => [
+                'class' => PHPDriver::class,
+                'paths' => [
+                    __DIR__ . '/../mapping/PHPDriver/odm-mongodb'
+                ]
+            ],
+            'odm_default' => [
+                'drivers' => [
+                    'Money\Money' => 'money_driver_odm_mongodb'
+                ],
+            ],
             'orm_default' => [
                 'drivers' => [
-                    'Money\Money' => 'money_driver'
+                    'Money\Money' => 'money_driver_orm'
                 ],
+            ]
+        ],
+        'configuration' => [
+            'odm_default' => [
+                'types' => [
+                    'currency' => \ZFBrasil\DoctrineMoneyModule\ODM\MongoDB\Types\CurrencyType::class
+                ]
+            ],
+            'orm_default' => [
+                'types' => [
+                    'currency' => \ZFBrasil\DoctrineMoneyModule\DBAL\Types\CurrencyType::class
+                ]
             ],
         ],
         'connection' => [
@@ -48,13 +70,6 @@ return [
                 ],
             ],
         ],
-        'configuration' => [
-            'orm_default' => [
-                'types' => [
-                    'currency' => CurrencyType::class
-                ]
-            ]
-        ]
     ],
     'money' => [
         'currencies' => require __DIR__ . '/currencies.config.php'

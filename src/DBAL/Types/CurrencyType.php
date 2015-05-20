@@ -32,12 +32,6 @@ class CurrencyType extends StringType
             return $value;
         }
 
-        $val = new Currency($value);
-
-        if (!$val) {
-            throw ConversionException::conversionFailedFormat($value, $this->getName(), 'string');
-        }
-
-        return $val;
+        return new Currency($value);
     }
 }

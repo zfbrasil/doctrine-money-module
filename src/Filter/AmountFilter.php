@@ -21,6 +21,10 @@ class AmountFilter extends AbstractFilter
      */
     public function filter($value)
     {
+        if (null === $value || (is_string($value) && strlen($value) === 0)) {
+            return null;
+        }
+
         return Money::stringToUnits($value);
     }
 }
