@@ -14,6 +14,15 @@ class CurrencyType extends Type
         return self::NAME;
     }
 
+    public function convertToDatabaseValue($value)
+    {
+        if ($value) {
+            return (string) $value;
+        }
+
+        return null;
+    }
+
     public function convertToPHPValue($value)
     {
         if ($value === null || $value instanceof Currency) {
@@ -21,17 +30,6 @@ class CurrencyType extends Type
         }
 
         return new Currency($value);
-    }
-
-    public function closureToMongo()
-    {
-        return '
-            if ($value) {
-                $return = $value->getName();
-            } else {
-                $return null;
-            }
-           ';
     }
 
     public function closureToPHP()
