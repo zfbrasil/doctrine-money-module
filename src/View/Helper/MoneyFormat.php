@@ -15,10 +15,10 @@ class MoneyFormat extends AbstractHelper
      * @param Money $money
      * @return string
      */
-    public function __invoke(Money $money)
+    public function __invoke(Money $money, $showDecimals = null, $locale = null, $pattern = null)
     {
         $currencyFormat = $this->getView()->plugin('currencyFormat');
         
-        return $currencyFormat($money->getAmount() / 100, $money->getCurrency());
+        return $currencyFormat($money->getAmount() / 100, $money->getCurrency(), $showDecimals, $locale, $pattern);
     }
 }
