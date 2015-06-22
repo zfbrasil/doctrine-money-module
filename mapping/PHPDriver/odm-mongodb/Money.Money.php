@@ -4,7 +4,7 @@ $metadata->isEmbeddedDocument = true;
 
 $metadata->mapField(array(
     'fieldName' => 'amount',
-    'type' => 'integer',
+    'type' => 'int',
     'nullable' => true
 ));
 
