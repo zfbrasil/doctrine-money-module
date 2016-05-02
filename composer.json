@@ -24,7 +24,7 @@
     },
     "require": {
         "php": ">=5.5",
-        "doctrine/doctrine-module": "~0.8",
+        "doctrine/doctrine-module": "~0.8 || ~1.0",
         "zendframework/zend-form": "~2.3",
         "zendframework/zend-filter": "~2.3",
         "zendframework/zend-validator": "~2.3",
