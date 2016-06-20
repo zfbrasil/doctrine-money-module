@@ -2,7 +2,7 @@
 
 namespace ZFBrasil\DoctrineMoneyModule\Hydrator;
 
-use Zend\Stdlib\Hydrator\HydratorInterface;
+use Zend\Hydrator\HydratorInterface;
 use Money\Money;
 use Money\Currency;
 
@@ -32,6 +32,10 @@ class MoneyHydrator implements HydratorInterface
      */
     public function hydrate(array $data, $object)
     {
+        if (empty($data['amount']) || empty($data['currency'])) {
+            return null;
+        }
+
         return new Money(
             $data['amount'],
             new Currency($data['currency'])
