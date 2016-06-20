@@ -2,7 +2,7 @@
 
 namespace ZFBrasil\DoctrineMoneyModule\Hydrator;
 
-use Zend\Stdlib\Hydrator\HydratorInterface;
+use Zend\Hydrator\HydratorInterface;
 use Money\Money;
 use Money\Currency;
 
