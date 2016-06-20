@@ -7,7 +7,7 @@ use Money\Money;
 use Money\Currency;
 
 /**
- * Hydrator for Money object
+ * Hydrator for Money object.
  *
  * @author Fábio Carneiro <fahecs@gmail.com>
  * @license MIT
@@ -15,20 +15,20 @@ use Money\Currency;
 class MoneyHydrator implements HydratorInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function extract($object)
     {
         return [
             'amount' => $object->getAmount(),
-            'currency' => $object->getCurrency()->getName()
+            'currency' => $object->getCurrency()->getName(),
         ];
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
-     * @return Money
+     * @return Money|null
      */
     public function hydrate(array $data, $object)
     {

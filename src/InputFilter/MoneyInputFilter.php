@@ -14,7 +14,7 @@ use ZFBrasil\DoctrineMoneyModule\Filter\AmountFilter;
 class MoneyInputFilter extends InputFilter
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function init()
     {
@@ -22,22 +22,22 @@ class MoneyInputFilter extends InputFilter
             'name' => 'amount',
             'required' => true,
             'filters' => [
-                ['name' => AmountFilter::class]
+                ['name' => AmountFilter::class],
             ],
             'validators' => [
-                ['name' => NotEmpty::class]
-            ]
+                ['name' => NotEmpty::class],
+            ],
         ]);
 
         $this->add([
             'name' => 'currency',
             'required' => true,
             'filters' => [
-                ['name' => StringToUpper::class]
+                ['name' => StringToUpper::class],
             ],
             'validators' => [
-                ['name' => NotEmpty::class]
-            ]
+                ['name' => NotEmpty::class],
+            ],
         ]);
     }
 }

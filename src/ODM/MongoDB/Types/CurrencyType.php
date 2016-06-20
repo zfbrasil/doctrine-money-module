@@ -9,11 +9,19 @@ class CurrencyType extends Type
 {
     const NAME = 'currency';
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return self::NAME;
     }
 
+    /**
+     * @param mixed $value
+     *
+     * @return null|string
+     */
     public function convertToDatabaseValue($value)
     {
         if ($value) {
@@ -23,6 +31,11 @@ class CurrencyType extends Type
         return null;
     }
 
+    /**
+     * @param string $value
+     *
+     * @return string|Currency
+     */
     public function convertToPHPValue($value)
     {
         if ($value === null || $value instanceof Currency) {

@@ -4,9 +4,6 @@ namespace ZFBrasil\Test\DoctrineMoneyModule\Hydrator;
 
 use Money\Currency;
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Form\FormElementManager;
-use ZFBrasil\DoctrineMoneyModule\Form\Factory\MoneyFieldsetFactory;
-use ZFBrasil\DoctrineMoneyModule\Form\MoneyFieldset;
 use Money\Money;
 use ZFBrasil\DoctrineMoneyModule\Hydrator\MoneyHydrator;
 

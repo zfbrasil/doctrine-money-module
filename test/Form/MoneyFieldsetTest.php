@@ -5,15 +5,12 @@ namespace ZFBrasil\Test\DoctrineMoneyModule\Form;
 use Money\Currency;
 use Money\Money;
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Form\Element\Number;
-use Zend\Form\Factory;
 use Zend\Form\FormElementManager;
-use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
 use ZFBrasil\DoctrineMoneyModule\Form\Factory\MoneyFieldsetFactory;
 use ZFBrasil\DoctrineMoneyModule\Form\MoneyFieldset;
 
 /**
- * Description of MoneyFieldsetTest
+ * Description of MoneyFieldsetTest.
  *
  * @author  Fábio Carneiro <fahecs@gmail.com>
  * @license MIT
@@ -26,7 +23,7 @@ class MoneyFieldsetTest extends TestCase
 
         $fieldset->bindValues([
             'amount' => 500,
-            'currency' => 'BRL'
+            'currency' => 'BRL',
         ]);
         $this->assertInstanceOf(Money::class, $fieldset->getObject());
     }
@@ -47,8 +44,8 @@ class MoneyFieldsetTest extends TestCase
         $fieldset = $this->getMoneyFieldset();
 
         $fieldset->bindValues([
-            'amount' => "500",
-            'currency' => 'BRL'
+            'amount' => '500',
+            'currency' => 'BRL',
         ]);
 
         $this->assertInstanceOf(Money::class, $fieldset->getObject());

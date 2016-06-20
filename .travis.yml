@@ -10,7 +10,8 @@ before_script:
 script:
     - composer install --prefer-source
     - vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml
-    - vendor/bin/php-cs-fixer fix -v --dry-run ./test
+    - vendor/bin/php-cs-fixer fix -v --fixers=-empty_return --diff --dry-run ./src
+    - vendor/bin/php-cs-fixer fix -v --fixers=-empty_return --diff --dry-run ./test
 
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar

@@ -5,7 +5,7 @@ namespace ZFBrasil\Test\DoctrineMoneyModule\TestAsset\Model;
 use Money\Money;
 
 /**
- * Model for testing purposes
+ * Model for testing purposes.
  *
  * @author  Fábio Carneiro <fahecs@gmail.com>
  * @license MIT
