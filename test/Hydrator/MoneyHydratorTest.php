@@ -21,7 +21,7 @@ class MoneyHydratorTest extends TestCase
         $object = new Money(500, new Currency('BRL'));
         $hydrator = new MoneyHydrator();
         $extracted = $hydrator->extract($object);
-        $expected = ['amount' => 5, 'currency' => $object->getCurrency()->getName()];
+        $expected = ['amount' => 500, 'currency' => $object->getCurrency()->getName()];
 
         $this->assertEquals($expected, $extracted);
     }
