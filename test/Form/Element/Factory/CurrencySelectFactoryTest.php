@@ -24,9 +24,9 @@ class CurrencySelectFactoryTest extends TestCase
         'money' => [
             'currencies' => [
                 'BRL' => 'Brazilian Real',
-                'SAD' => 'Sad Asteka'
-            ]
-        ]
+                'SAD' => 'Sad Asteka',
+            ],
+        ],
     ];
 
     public function setUp()

@@ -16,7 +16,7 @@ use ZFBrasil\Test\DoctrineMoneyModule\TestAsset\Model\HasMoneyPropertyModel;
 use Zend\Stdlib\Hydrator\ObjectProperty;
 
 /**
- * Test to see if Form returns a valid object on getData
+ * Test to see if Form returns a valid object on getData.
  *
  * @author  Fábio Carneiro <fahecs@gmail.com>
  * @license MIT
@@ -41,7 +41,7 @@ class FormIntegrationTest extends TestCase
 
         $form = new Form();
         $form->setHydrator(new ObjectProperty());
-        $form->setObject(new StdClass);
+        $form->setObject(new StdClass());
         $form->add($element, ['name' => 'money']);
 
         $this->assertFalse($form->setData([])->isValid());
@@ -50,24 +50,24 @@ class FormIntegrationTest extends TestCase
 
         $data = [
             'money' => [
-                'amount' => "500.20",
-                'currency' => "BRL"
-            ]
+                'amount' => '500.20',
+                'currency' => 'BRL',
+            ],
         ];
 
         $form->setData($data);
 
         $this->assertTrue($form->isValid());
 
-        $amountValue   = $form->get('money')->get('amount')->getValue();
+        $amountValue = $form->get('money')->get('amount')->getValue();
         $currencyValue = $form->get('money')->get('currency')->getValue();
-        $object        = $form->getData()->money;
+        $object = $form->getData()->money;
 
-        $this->assertSame("500.20", $amountValue);
-        $this->assertSame("BRL", $currencyValue);
+        $this->assertSame('500.20', $amountValue);
+        $this->assertSame('BRL', $currencyValue);
         $this->assertInstanceOf(Money::class, $object);
         $this->assertSame(50020, $object->getAmount());
-        $this->assertSame("BRL", $object->getCurrency()->getName());
+        $this->assertSame('BRL', $object->getCurrency()->getName());
     }
 
     public function testElementInAFieldsetForSomeModel()
@@ -84,29 +84,29 @@ class FormIntegrationTest extends TestCase
         $form->add($fieldset);
 
         // todo: can't load this
-        $form->bind(new HasMoneyPropertyModel);
+        $form->bind(new HasMoneyPropertyModel());
 
         $data = [
             'hasMoneyElementFieldset' => [
                 'price' => [
-                    'amount' => "500.25",
-                    'currency' => "BRL"
-                ]
-            ]
+                    'amount' => '500.25',
+                    'currency' => 'BRL',
+                ],
+            ],
         ];
 
         $form->setData($data);
         $this->assertTrue($form->isValid());
 
-        $amountValue   = $form->get('hasMoneyElementFieldset')->get('price')->get('amount')->getValue();
+        $amountValue = $form->get('hasMoneyElementFieldset')->get('price')->get('amount')->getValue();
         $currencyValue = $form->get('hasMoneyElementFieldset')->get('price')->get('currency')->getValue();
-        $object        = $form->getData();
+        $object = $form->getData();
 
-        $this->assertSame("500.25", $amountValue);
-        $this->assertSame("BRL", $currencyValue);
+        $this->assertSame('500.25', $amountValue);
+        $this->assertSame('BRL', $currencyValue);
         $this->assertInstanceOf(Money::class, $object->getPrice());
         $this->assertSame(50025, $object->getPrice()->getAmount());
-        $this->assertSame("BRL", $object->getPrice()->getCurrency()->getName());
+        $this->assertSame('BRL', $object->getPrice()->getCurrency()->getName());
     }
 
     /**

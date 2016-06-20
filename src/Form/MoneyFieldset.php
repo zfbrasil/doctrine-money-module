@@ -9,7 +9,7 @@ use ZFBrasil\DoctrineMoneyModule\Form\Element\CurrencySelect;
 use ZFBrasil\DoctrineMoneyModule\InputFilter\MoneyInputFilter;
 
 /**
- * Money form element that will make it very easy to work with money and currencies
+ * Money form element that will make it very easy to work with money and currencies.
  *
  * @author Fábio Carneiro <fahecs@gmail.com>
  * @license MIT
@@ -17,7 +17,7 @@ use ZFBrasil\DoctrineMoneyModule\InputFilter\MoneyInputFilter;
 class MoneyFieldset extends Fieldset implements InputFilterProviderInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function init()
     {
@@ -25,24 +25,24 @@ class MoneyFieldset extends Fieldset implements InputFilterProviderInterface
             'type' => Number::class,
             'name' => 'amount',
             'options' => [
-                'label' => 'Amount'
+                'label' => 'Amount',
             ],
             'attributes' => [
                 'step' => '0.01',
-            ]
+            ],
         ]);
 
         $this->add([
             'type' => CurrencySelect::class,
             'name' => 'currency',
             'options' => [
-                'label' => 'Currency'
-            ]
+                'label' => 'Currency',
+            ],
         ]);
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getInputFilterSpecification()
     {

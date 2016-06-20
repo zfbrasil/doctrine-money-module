@@ -4,7 +4,6 @@ namespace ZFBrasil\DoctrineMoneyModule\DBAL\Types;
 
 use Doctrine\DBAL\Types\StringType;
 use Money\Currency;
-use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 /**
@@ -14,9 +13,9 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 class CurrencyType extends StringType
 {
     const NAME = 'currency';
-    
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -24,7 +23,7 @@ class CurrencyType extends StringType
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {

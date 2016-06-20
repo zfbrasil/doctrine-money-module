@@ -17,26 +17,27 @@
         }
     ],
     "require-dev": {
-    	"phpunit/phpunit": "~4.4",
-        "fabpot/php-cs-fixer": "dev-master",
-        "doctrine/dbal": "~2.5",
-        "doctrine/mongodb-odm": "1.0.*@dev"
+    	"phpunit/phpunit": "^4.4",
+        "friendsofphp/php-cs-fixer": "^1.11",
+        "doctrine/dbal": "^2.5",
+        "doctrine/mongodb-odm": "^1.0"
     },
     "require": {
-        "php": ">=5.5",
-        "doctrine/doctrine-module": "~0.8 || ~1.0",
-        "zendframework/zend-form": "~2.3",
-        "zendframework/zend-filter": "~2.3",
-        "zendframework/zend-validator": "~2.3",
-        "zendframework/zend-view": "~2.3",
-        "zendframework/zend-servicemanager": "~2.3",
-        "zendframework/zend-modulemanager": "~2.3",
-        "zendframework/zend-i18n": "~2.3",
-        "mathiasverraes/money": "1.2.*"
+        "php": "^5.5 || ^7.0",
+        "doctrine/doctrine-module": "^0.8 || ^1.0",
+        "zendframework/zend-form": "^2.3",
+        "zendframework/zend-filter": "^2.3",
+        "zendframework/zend-validator": "^2.3",
+        "zendframework/zend-view": "^2.3",
+        "zendframework/zend-servicemanager": "^2.3",
+        "zendframework/zend-modulemanager": "^2.3",
+        "zendframework/zend-i18n": "^2.3",
+        "mathiasverraes/money": "^1.2"
     },
     "suggest": {
-        "doctrine/dbal": "2.5.*",
-        "doctrine/mongodb-odm": "1.0.*@dev"
+        "doctrine/dbal": "^2.5",
+        "doctrine/mongodb-odm": "^1.0",
+        "doctrine/orm": "^2.5"
     },
     "autoload": {
         "psr-4": {

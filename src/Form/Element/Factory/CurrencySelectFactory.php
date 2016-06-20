@@ -14,6 +14,7 @@ class CurrencySelectFactory
 {
     /**
      * @param FormElementManager $formElementManager
+     *
      * @return CurrencySelect
      */
     public function __invoke(FormElementManager $formElementManager)
@@ -21,7 +22,7 @@ class CurrencySelectFactory
         $serviceManager = $formElementManager->getServiceLocator();
         $config = $serviceManager->get('Config');
 
-        if (! isset($config['money']['currencies'])) {
+        if (!isset($config['money']['currencies'])) {
             throw new InvalidArgumentException('Couldn\'t find currencies configuration.');
         }
 
